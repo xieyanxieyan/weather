@@ -18,7 +18,8 @@ Page({
   data:{
     nowTemp:14,
     nowWeather:'多云',
-    nowWeatherBackground:''
+    nowWeatherBackground:'',
+    hourlyWeather:[]
   },
   onPullDownRefresh(){
     this.getNow(()=>{
@@ -31,25 +32,44 @@ Page({
 getNow(callback){
    wx.request({
      url:'https://test-miniprogram.com/api/weather/now',
-     data:{city:'广州市'},
+     data:{city:'哈尔滨市'},
      success:res => {
-     let result = res.data.result;
-     let temp = result.now.temp;
-     let weather = result.now.weather;
-     console.log(temp,weather);
-     this.setData({
-       'nowTemp':temp,
-  'nowWeather':weatherMap[weather],
-  'nowWeatherBackground':'../../images/'+weather+'-bg.png'
-     })
-     wx.setNavigationBarColor({
-       frontColor: '#ffffff',
-       backgroundColor: weatherColorMap[weather],
-     })
+    let result = res.data.result;
+     this.setNow(result);
+     this.setHourlyWeather(result);
      },
      compulete:()=>{
       callback&&callback();
      }
    })
+  },
+  setNow(result){
+    let temp = result.now.temp;
+    let weather = result.now.weather;
+    this.setData({
+      'nowTemp': temp,
+      'nowWeather': weatherMap[weather],
+      'nowWeatherBackground': '../../images/' + weather + '-bg.png'
+    })
+    wx.setNavigationBarColor({
+      frontColor: '#ffffff',
+      backgroundColor: weatherColorMap[weather],
+    })
+  },
+  setHourlyWeather(result){
+    let forecast = result.forecast;
+    let hourlyWeather = [];
+    let nowHour = new Date().getHours();
+    for (let i = 0; i < forecast.length; i++) {
+      hourlyWeather.push({
+        time: (i * 3 + nowHour) % 24 + '时',
+        iconPath: '../../images/' + forecast[i].weather + '-icon.png',
+        temp: forecast[i].temp + '°'
+      })
+    }
+    hourlyWeather[0].time = '现在';
+    this.setData({
+      hourlyWeather: hourlyWeather
+    })
   }
 })
