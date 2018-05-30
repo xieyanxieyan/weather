@@ -12,7 +12,7 @@
   opacity: 0.65;
 }
 .weather-wrapper{
-  position:absolute;
+  position:relative;
   width:750rpx;
   padding-top:174rpx;
   padding-bottom:250rpx;
@@ -24,4 +24,20 @@
   width:100%;
   height:100%;
   z-index:-2;
+}
+.timetips{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  margin-top:40rpx;
+}
+.timetips-icon{
+  margin-right:10rpx;
+  width:36rpx;
+  height:28rpx;
+}
+.timetips-text{
+  font-size:30rpx;
+  line-height:42rpx;
+  opacity:0.5;
 }

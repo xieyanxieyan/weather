@@ -22,7 +22,7 @@ Page({
   },
   onPullDownRefresh(){
     this.getNow(()=>{
-      // wx.stopPullDownRefresh();
+      wx.stopPullDownRefresh();
     });
   },
   onLoad(){

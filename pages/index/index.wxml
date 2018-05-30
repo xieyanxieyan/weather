@@ -3,3 +3,8 @@
   <view class="weather">{{nowWeather}}</view>
  <image class="bgpic"  src="{{nowWeatherBackground}}" model="scaleToFile"></image>
 </view>
+<view class="timetips">
+    <image class="timetips-icon" src="../../images/time-icon.png"></image>
+    <view class="timetips-text">未来24小时t天气预测</view>
+</view>
+<view wx:for="{{[1,2,3,4,5]}}">{{item}}</view>
