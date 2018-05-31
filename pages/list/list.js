@@ -2,9 +2,10 @@
 const dayMap = ['星期日','星期一','星期二','星期三','星期四','星期五','星期六']
 Page({
   data:{
-    weekWeather:[]
+    weekWeather:[],
   },
-  onLoad(){
+  onLoad(options){
+    console.log(options.city);
     this.getWeekWeather();
 
   },
@@ -30,7 +31,6 @@ Page({
     })
   },
   setWeekWeather(result){
-    console.log(result);
     let weekWeather = [];
     for(let i =0;i<7;i++){
       let date = new Date();

@@ -14,8 +14,34 @@
 .weather-wrapper{
   position:relative;
   width:750rpx;
-  padding-top:174rpx;
+  padding-top:20rpx;
   padding-bottom:250rpx;
+}
+.location-wrapper{
+  margin-bottom:60rpx;
+  font-size:30rpx;
+  line-height:42rpx;
+}
+.location{
+display:flex;
+justify-content: center;
+align-items: center;
+}
+.location-icon{
+  margin-right:10rpx;
+  width:21rpx;
+  height:30rpx;
+}
+.location-text{
+  opacity:0.5;
+  line-height:42rpx;
+}
+.location-tips{
+  margin-top:10rpx;
+line-height:42rpx;
+text-align:center;
+height:42rpx;
+opacity:0.5;
 }
 .bgpic{
   position:absolute;
@@ -41,6 +67,7 @@
   font-size:30rpx;
   line-height:42rpx;
   opacity:0.5;
+  text-align:center;
 }
 .forecast-list{
   display:flex;
